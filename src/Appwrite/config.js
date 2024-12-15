@@ -116,9 +116,7 @@ export class Service {
     async getAllCounsellors() {
     try {
         // Logging database and collection ID to confirm they are correct
-        console.log("Database ID:", conf.appwriteDatabaseId);
-        console.log("Collection ID:", conf.appwriteCollectionId);
-        console.log("Collection ID:", conf.appwriteCollectionId_2);
+
         
         const response = await this.databases.listDocuments(
             conf.appwriteDatabaseId,

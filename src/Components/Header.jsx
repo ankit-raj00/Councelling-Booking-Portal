@@ -9,10 +9,10 @@ import LogoutBtn2 from './LogoutBtn2'
 
 function Header() {
   const navigate = useNavigate()
+  console.log('new');
 
   const authStatus = useSelector((state) => state.auth.status)
   const authcounc = useSelector((state) => state.auth.councellor_status)
-  console.log('new');
 
   const navItems = [
     { name: 'Home', slug: '/', active: true },

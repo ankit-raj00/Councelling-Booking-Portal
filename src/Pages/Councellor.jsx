@@ -307,9 +307,7 @@ function Councellor() {
         </div>
 
         {/* Logout Button */}
-        <div className="flex justify-end mt-6">
-          <LogoutBtn2 />
-        </div>
+        
       </div>
     </div>
   );

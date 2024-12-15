@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import Container from '../Container/Container'
 import Logo from './Logo'
 import LogoutBtn from './LogoutBtn'
+import LogoutBtn2 from './LogoutBtn2'
 
 function Header() {
   const navigate = useNavigate()
@@ -14,12 +15,13 @@ function Header() {
 
   const navItems = [
     { name: 'Home', slug: '/', active: true },
-    { name: 'Login', slug: '/login', active: !authStatus },
+    { name: 'Login', slug: '/login', active: !authStatus && !authcounc },
     { name: 'Appointment', slug: '/appo', active: authStatus },
     { name: 'Teams', slug: '/teams', active: true },
     { name: 'About Us', slug: '/about-us', active: true },
     { name: 'Counsellor Login', slug: '/councellor/login', active: !authcounc },
     { name: 'Counsellor Dashboard', slug: '/councellor', active: authcounc },
+    
   ]
 
   return (
@@ -46,9 +48,13 @@ function Header() {
                   </li>
                 )
             )}
-            {authStatus && (
+            {authStatus && !authcounc && (
               <li>
                 <LogoutBtn />
+              </li>
+            )}{!authStatus && authcounc && (
+              <li>
+                <LogoutBtn2 />
               </li>
             )}
           </ul>

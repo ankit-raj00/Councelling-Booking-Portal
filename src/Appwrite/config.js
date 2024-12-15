@@ -114,23 +114,28 @@ export class Service {
         }
     }
     async getAllCounsellors() {
-        try {
-            const response = await this.databases.listDocuments(
-                conf.appwriteDatabaseId,
-                conf.appwriteCollectionId_2
-            );
+    try {
+        // Logging database and collection ID to confirm they are correct
+        console.log("Database ID:", conf.appwriteDatabaseId);
+        console.log("Collection ID:", conf.appwriteCollectionId_2);
         
-            if (response.documents.length > 0) {
-                console.log("All Counsellor Details:", response.documents); // Log the entire collection
-                return response.documents; // Return all documents in the collection
-            } else {
-                return { error: "No counsellors found." }; // Return an error if no data is found
-            }
-        } catch (error) {
-            console.log("Appwrite service :: getAllCounsellors :: error", error);
-            return { error: error.message || "An unexpected error occurred." }; // Handle errors
+        const response = await this.databases.listDocuments(
+            conf.appwriteDatabaseId,
+            conf.appwriteCollectionId_2
+        );
+
+        if (response.documents.length > 0) {
+            console.log("All Counsellor Details:", response.documents); 
+            return response.documents;
+        } else {
+            return { error: "No counsellors found." };
         }
+    } catch (error) {
+        console.log("Appwrite service :: getAllCounsellors :: error", error);
+        return { error: error.message || "An unexpected error occurred." };
     }
+}
+
     async getAllRowsByEnroll(Enroll) {
         try {
             // Ensure Enroll is treated as an integer
